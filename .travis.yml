@@ -8,11 +8,11 @@ env:
     - CI_ROS_DISTRO="melodic"
 
 install:
-  - docker build -t mir_experiments:0.6 ./container/Dockerfile .
+  - docker build -t mir_experiments:0.6 -f ./containers/Dockerfile .
 
 scripts: 
-  - docker-compose -f ./container/Dockerfile up
-  - docker-compose ./container/Dockerfile stop
+  - docker-compose -f ./containers/Dockerfile up
+  - docker-compose -f ./containers/Dockerfile stop
 
 notifications:
   email: false
