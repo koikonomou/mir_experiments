@@ -28,8 +28,13 @@ set(PACKAGE_DEPENDENCIES
 )
 
 find_package(catkin REQUIRED COMPONENTS ${PACKAGE_DEPENDENCIES})
-
+find_package(rostest REQUIRED)
 find_package(octomap REQUIRED)
+
+if (CATKIN_ENABLE_TESTING)
+  add_rostest(tests/test_odom.test)
+  add_rostest(tests/test_octomap_mapping.test)
+endif()
 
 include_directories(
     include
