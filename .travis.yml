@@ -1,0 +1,18 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  matrix:
+    - CI_ROS_DISTRO="melodic"
+
+install:
+  - docker build -t mir_experiments:0.6 ./container/Dockerfile .
+
+scripts: 
+  - docker-compose -f ./container/Dockerfile up
+  - docker-compose ./container/Dockerfile stop
+
+notifications:
+  email: false
